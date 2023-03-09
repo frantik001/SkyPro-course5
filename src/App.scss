@@ -47,6 +47,23 @@ body {
     color: #ffffff;
 }
 
+.filter__button {
+    position: relative;
+}
+
+.suggest-container {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 999;
+}
+
+.suggest {
+    background: #313131;
+    border-radius: 12px;
+    padding: 10px;
+}
+
 .wrapper {
     width: 100%;
     min-height: 100%;
@@ -142,6 +159,10 @@ body {
     &__menu {
         display: block;
         visibility: visible;
+    }
+
+    &__menu_closed {
+        display: none;
     }
 }
 
@@ -359,7 +380,10 @@ body {
         stroke: #4e4e4e;
     }
 
-    //&__title-text {}
+    &__title-text {
+        height: 30px;
+        width: 320px;
+    }
 
     &__title-link {
         font-style: normal;
@@ -381,6 +405,7 @@ body {
         width: 321px;
         display: flex;
         justify-content: flex-start;
+        height: 30px;
     }
 
     &__author-link {
@@ -394,6 +419,7 @@ body {
 
     &__album {
         width: 245px;
+        height: 30px;
     }
 
     &__album-link {
@@ -404,7 +430,9 @@ body {
         color: #696969;
     }
 
-    //&__time {}
+    &__time {
+        height: 30px;
+    }
 
     &__time-svg {
         width: 14px;
@@ -716,4 +744,14 @@ body {
     &__progress-line {
         width: 109px;
     }
+}
+
+.btn__active {
+    border-color: #ad61ff;
+    color: #ad61ff;
+}
+
+.filter .suggest li:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
