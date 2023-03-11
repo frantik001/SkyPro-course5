@@ -250,7 +250,7 @@ function ContentTitle() {
                 АЛЬБОМ
             </div>
             <div className={`${styles.playlist_title__col} ${styles.col04}`}>
-                <svg className={styles['playlist-title__svg']} alt="time">
+                <svg className={styles.playlist_title__svg} alt="time">
                     <use xlinkHref="img/icon/sprite.svg#icon-watch"></use>
                 </svg>
             </div>
