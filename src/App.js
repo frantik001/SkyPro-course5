@@ -47,9 +47,9 @@ function Logo() {
     )
 }
 
-function Burger(props) {
+function Burger({ onClick }) {
     return (
-        <div className="nav__burger burger" onClick={props.onClick}>
+        <div className="nav__burger burger" onClick={onClick}>
             <span className="burger__line"></span>
             <span className="burger__line"></span>
             <span className="burger__line"></span>
@@ -116,11 +116,7 @@ function Filter() {
     const [activeSuggest, setActiveSuggest] = useState(null)
 
     const toggleSuggest = (suggestType) => {
-        if (activeSuggest === suggestType) {
-            setActiveSuggest(null)
-        } else {
-            setActiveSuggest(suggestType)
-        }
+        setActiveSuggest(activeSuggest === suggestType ? null : suggestType)
     }
 
     const getButtonClassName = (suggestType) => {
@@ -273,24 +269,36 @@ function PlaylistItem(props) {
                             <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
                         </svg>
                     </div>
-                    <div className="track__title-text" style={{backgroundColor: showText ? '#313131' : ''}}>
+                    <div
+                        className="track__title-text"
+                        style={{ backgroundColor: showText ? '#313131' : '' }}
+                    >
                         <a className="track__title-link " href="http://">
                             {showText ? '' : props.name}
                             <span className="track__title-span"></span>
                         </a>
                     </div>
                 </div>
-                <div className="track__author" style={{backgroundColor: showText ? '#313131' : ''}}>
+                <div
+                    className="track__author"
+                    style={{ backgroundColor: showText ? '#313131' : '' }}
+                >
                     <a className="track__author-link" href="http://">
                         {showText ? '' : props.author}
                     </a>
                 </div>
-                <div className="track__album" style={{backgroundColor: showText ? '#313131' : ''}}>
+                <div
+                    className="track__album"
+                    style={{ backgroundColor: showText ? '#313131' : '' }}
+                >
                     <a className="track__album-link " href="http://">
                         {showText ? '' : props.album}
                     </a>
                 </div>
-                <div className="track__time" style={{backgroundColor: showText ? '#313131' : ''}}>
+                <div
+                    className="track__time"
+                    style={{ backgroundColor: showText ? '#313131' : '' }}
+                >
                     <svg className="track__time-svg" alt="time">
                         <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
                     </svg>
