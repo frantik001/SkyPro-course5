@@ -43,7 +43,7 @@ body {
   position: relative;
 }
 
-.suggest-container {
+.suggest_container {
   position: absolute;
   top: 100%;
   left: 0;
@@ -71,32 +71,32 @@ body {
   background-color: #181818;
 }
 
-._btn-text:hover {
+._btn_text:hover {
   border-color: #d9b6ff;
   color: #d9b6ff;
   cursor: pointer;
 }
 
-._btn-icon:hover svg {
+._btn_icon:hover svg {
   fill: transparent;
   stroke: #acacac;
   cursor: pointer;
 }
 
-._btn-text:active {
+._btn_text:active {
   border-color: #ad61ff;
   color: #ad61ff;
   cursor: pointer;
 }
 
-._btn-icon:active svg {
+._btn_icon:active svg {
   fill: transparent;
   stroke: #ffffff;
   cursor: pointer;
 }
 
-._btn-icon:active .track-play__like-svg,
-._btn-icon:active .track-play__dislike-svg {
+._btn_icon:active .track_play__like_svg,
+._btn_icon:active .track_play__dislike_svg {
   fill: #696969;
   stroke: #ffffff;
   cursor: pointer;
@@ -268,7 +268,7 @@ body {
   overflow-y: auto;
 }
 
-.playlist-title__col {
+.playlist_title__col {
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -277,7 +277,7 @@ body {
   color: #696969;
   text-transform: uppercase;
 }
-.playlist-title__svg {
+.playlist_title__svg {
   width: 12px;
   height: 12px;
   fill: transparent;
@@ -319,7 +319,7 @@ body {
   align-items: center;
   width: 447px;
 }
-.track__title-image {
+.track__title_image {
   width: 51px;
   height: 51px;
   padding: 16px;
@@ -329,24 +329,24 @@ body {
   justify-content: center;
   margin-right: 17px;
 }
-.track__title-svg {
+.track__title_svg {
   width: 18px;
   height: 17px;
   fill: transparent;
   stroke: #4e4e4e;
 }
-.track__title-text {
+.track__title_text {
   height: 30px;
   width: 320px;
 }
-.track__title-link {
+.track__title_link {
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   color: #ffffff;
 }
-.track__title-span {
+.track__title_span {
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -359,7 +359,7 @@ body {
   justify-content: flex-start;
   height: 30px;
 }
-.track__author-link {
+.track__author_link {
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -371,7 +371,7 @@ body {
   width: 245px;
   height: 30px;
 }
-.track__album-link {
+.track__album_link {
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -381,14 +381,14 @@ body {
 .track__time {
   height: 30px;
 }
-.track__time-svg {
+.track__time_svg {
   width: 14px;
   height: 12px;
   margin-right: 17px;
   fill: transparent;
   stroke: #696969;
 }
-.track__time-text {
+.track__time_text {
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -404,7 +404,7 @@ body {
   justify-content: flex-end;
   padding: 12px 0 15px 0;
 }
-.sidebar__personal-name {
+.sidebar__personal_name {
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -458,12 +458,12 @@ body {
   display: flex;
   flex-direction: column;
 }
-.bar__player-progress {
+.bar__player_progress {
   width: 100%;
   height: 5px;
   background: #2e2e2e;
 }
-.bar__player-block {
+.bar__player_block {
   height: 73px;
   display: flex;
   flex-direction: row;
@@ -475,7 +475,7 @@ body {
   align-items: center;
   justify-content: flex-start;
 }
-.bar__volume-block {
+.bar__volume_block {
   width: auto;
   display: flex;
   align-items: center;
@@ -487,68 +487,68 @@ body {
   flex-direction: row;
   padding: 0 27px 0 31px;
 }
-.player__btn-prev, .player__btn-play, .player__btn-next, .player__btn-repeat, .player__btn-shuffle {
+.player__btn_prev, .player__btn_play, .player__btn_next, .player__btn_repeat, .player__btn_shuffle {
   padding: 5px;
   display: flex;
   align-items: center;
 }
-.player__btn-prev {
+.player__btn_prev {
   margin-right: 23px;
 }
-.player__btn-prev-svg {
+.player__btn_prev_svg {
   width: 15px;
   height: 14px;
 }
-.player__btn-play {
+.player__btn_play {
   margin-right: 23px;
 }
-.player__btn-play-svg {
+.player__btn_play_svg {
   width: 22px;
   height: 20px;
   fill: #d9d9d9;
 }
-.player__btn-next {
+.player__btn_next {
   margin-right: 28px;
   fill: #a53939;
 }
-.player__btn-next-svg {
+.player__btn_next_svg {
   width: 15px;
   height: 14px;
   fill: inherit;
   stroke: #d9d9d9;
 }
-.player__btn-repeat {
+.player__btn_repeat {
   margin-right: 24px;
 }
-.player__btn-repeat-svg {
+.player__btn_repeat_svg {
   width: 18px;
   height: 12px;
   fill: transparent;
   stroke: #696969;
 }
-.player__btn-shuffle {
+.player__btn_shuffle {
   display: flex;
   align-items: center;
 }
-.player__btn-shuffle-svg {
+.player__btn_shuffle_svg {
   width: 19px;
   height: 12px;
   fill: transparent;
   stroke: #696969;
 }
-.player__track-play {
+.player__track_play {
   display: flex;
   flex-direction: row;
 }
 
-.track-play__contain {
+.track_play__contain {
   width: auto;
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-areas: "image author" "image album";
   align-items: center;
 }
-.track-play__image {
+.track_play__image {
   width: 51px;
   height: 51px;
   background-color: #313131;
@@ -558,17 +558,17 @@ body {
   margin-right: 12px;
   grid-area: image;
 }
-.track-play__svg {
+.track_play__svg {
   width: 18px;
   height: 17px;
   fill: transparent;
   stroke: #4e4e4e;
 }
-.track-play__author {
+.track_play__author {
   grid-area: author;
   min-width: 49px;
 }
-.track-play__author-link {
+.track_play__author_link {
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -576,36 +576,36 @@ body {
   color: #ffffff;
   white-space: nowrap;
 }
-.track-play__album {
+.track_play__album {
   grid-area: album;
   min-width: 49px;
 }
-.track-play__album-link {
+.track_play__album_link {
   font-style: normal;
   font-weight: 400;
   font-size: 13px;
   line-height: 24px;
   color: #ffffff;
 }
-.track-play__like-dis {
+.track_play__like_dis {
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-left: 26%;
 }
-.track-play__like, .track-play__dislike {
+.track_play__like, .track_play__dislike {
   padding: 5px;
 }
-.track-play__like-svg {
+.track_play__like_svg {
   width: 14px;
   height: 12px;
   fill: transparent;
   stroke: #696969;
 }
-.track-play__dislike {
+.track_play__dislike {
   margin-left: 28.5px;
 }
-.track-play__dislike-svg {
+.track_play__dislike_svg {
   width: 14.34px;
   height: 13px;
   fill: transparent;
@@ -631,7 +631,7 @@ body {
 .volume__progress {
   width: 109px;
 }
-.volume__progress-line {
+.volume__progress_line {
   width: 109px;
 }
 
@@ -643,4 +643,4 @@ body {
 .filter .suggest li:hover {
   text-decoration: underline;
   cursor: pointer;
-}/*# sourceMappingURL=App.css.map */
+}/*# sourceMappingURL=App.module.css.map */
