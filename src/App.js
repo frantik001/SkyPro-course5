@@ -1,5 +1,6 @@
 import './App.css'
 import PropTypes from 'prop-types'
+import { useState, useEffect } from 'react'
 
 function App() {
     return (
@@ -23,11 +24,17 @@ function App() {
 }
 
 function Navigation() {
+    const [isOpen, setIsOpen] = useState(false)
+
+    function toggleMenu() {
+        setIsOpen(!isOpen)
+    }
+
     return (
         <nav className="main__nav nav">
             <Logo />
-            <Burger />
-            <Menu />
+            <Burger onClick={toggleMenu} />
+            <Menu isOpen={isOpen} />
         </nav>
     )
 }
@@ -40,9 +47,9 @@ function Logo() {
     )
 }
 
-function Burger() {
+function Burger({ onClick }) {
     return (
-        <div className="nav__burger burger">
+        <div className="nav__burger burger" onClick={onClick}>
             <span className="burger__line"></span>
             <span className="burger__line"></span>
             <span className="burger__line"></span>
@@ -50,9 +57,13 @@ function Burger() {
     )
 }
 
-function Menu() {
+function Menu(props) {
     return (
-        <div className="nav__menu menu">
+        <div
+            className={`nav__menu menu ${
+                props.isOpen ? '' : 'nav__menu_closed'
+            }`}
+        >
             <ul className="menu__list">
                 <li className="menu__item">
                     <a href="http://" className="menu__link">
@@ -102,16 +113,114 @@ function Search() {
 }
 
 function Filter() {
+    const [activeSuggest, setActiveSuggest] = useState(null)
+
+    const toggleSuggest = (suggestType) => {
+        setActiveSuggest(activeSuggest === suggestType ? null : suggestType)
+    }
+
+    const getButtonClassName = (suggestType) => {
+        let className = `filter__button button-${suggestType} `
+        if (activeSuggest === suggestType) {
+            className += 'btn__active'
+        } else {
+            className += '_btn-text'
+        }
+        return className
+    }
+
     return (
         <div className="centerblock__filter filter">
             <div className="filter__title">Искать по:</div>
-            <div className="filter__button button-author _btn-text">
+            <div
+                className={getButtonClassName('author')}
+                onClick={() => toggleSuggest('author')}
+            >
                 исполнителю
+                <div
+                    className="suggest-container"
+                    style={{
+                        display: activeSuggest === 'author' ? 'block' : 'none',
+                    }}
+                >
+                    <div className="suggest">
+                        <ul>
+                            <li>Ali Bakgor</li>
+                            <li>AR/CO</li>
+                            <li>Blue Foundation</li>
+                            <li>Calvin Harris</li>
+                            <li>Disciples</li>
+                            <li>Dynoro</li>
+                            <li>Hi Profile</li>
+                            <li>HYBIT</li>
+                            <li>Jaded</li>
+                            <li>minthaze</li>
+                            <li>Mr. Black</li>
+                            <li>Mr. Gee</li>
+                            <li>Nero</li>
+                            <li>Offer Nissim</li>
+                            <li>Outwork</li>
+                            <li>Psychopath</li>
+                            <li>Tom Boxer</li>
+                            <li>Will Clarke</li>
+                            <li>Zeds Dead</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div className="filter__button button-year _btn-text">
+            <div
+                className={getButtonClassName('year')}
+                onClick={() => toggleSuggest('year')}
+            >
                 году выпуска
+                <div
+                    className="suggest-container"
+                    style={{
+                        display: activeSuggest === 'year' ? 'block' : 'none',
+                    }}
+                >
+                    <div className="suggest">
+                        <ul>
+                            <li>2010</li>
+                            <li>2011</li>
+                            <li>2012</li>
+                            <li>2013</li>
+                            <li>2014</li>
+                            <li>2015</li>
+                            <li>2016</li>
+                            <li>2017</li>
+                            <li>2018</li>
+                            <li>2019</li>
+                            <li>2020</li>
+                            <li>2021</li>
+                            <li>2022</li>
+                            <li>2023</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div className="filter__button button-genre _btn-text">жанру</div>
+            <div
+                className={getButtonClassName('genre')}
+                onClick={() => toggleSuggest('genre')}
+            >
+                жанру
+                <div
+                    className="suggest-container"
+                    style={{
+                        display: activeSuggest === 'genre' ? 'block' : 'none',
+                    }}
+                >
+                    <div className="suggest">
+                        <ul>
+                            <li>Рок</li>
+                            <li>Хип-хоп</li>
+                            <li>Джаз</li>
+                            <li>Электронная музыка</li>
+                            <li>Классическая музыка</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
@@ -141,6 +250,16 @@ function ContentTitle() {
 }
 
 function PlaylistItem(props) {
+    const [showText, setShowText] = useState(true)
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setShowText(false)
+        }, 5000)
+
+        return () => clearTimeout(timer)
+    }, [])
+
     return (
         <div className="playlist__item">
             <div className="playlist__track track">
@@ -150,28 +269,42 @@ function PlaylistItem(props) {
                             <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
                         </svg>
                     </div>
-                    <div className="track__title-text">
-                        <a className="track__title-link" href="http://">
-                            {props.name}
+                    <div
+                        className="track__title-text"
+                        style={{ backgroundColor: showText ? '#313131' : '' }}
+                    >
+                        <a className="track__title-link " href="http://">
+                            {showText ? '' : props.name}
                             <span className="track__title-span"></span>
                         </a>
                     </div>
                 </div>
-                <div className="track__author">
+                <div
+                    className="track__author"
+                    style={{ backgroundColor: showText ? '#313131' : '' }}
+                >
                     <a className="track__author-link" href="http://">
-                        {props.author}
+                        {showText ? '' : props.author}
                     </a>
                 </div>
-                <div className="track__album">
-                    <a className="track__album-link" href="http://">
-                        {props.album}
+                <div
+                    className="track__album"
+                    style={{ backgroundColor: showText ? '#313131' : '' }}
+                >
+                    <a className="track__album-link " href="http://">
+                        {showText ? '' : props.album}
                     </a>
                 </div>
-                <div className="track__time">
+                <div
+                    className="track__time"
+                    style={{ backgroundColor: showText ? '#313131' : '' }}
+                >
                     <svg className="track__time-svg" alt="time">
                         <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
                     </svg>
-                    <span className="track__time-text">{props.time}</span>
+                    <span className="track__time-text">
+                        {showText ? '' : props.time}
+                    </span>
                 </div>
             </div>
         </div>
@@ -272,12 +405,28 @@ function SidebarName(props) {
 }
 
 function SidebarBlock() {
+    const [showBg, setShowBg] = useState(true)
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setShowBg(false)
+        }, 5000)
+
+        return () => clearTimeout(timer)
+    }, [])
+
     return (
         <div className="sidebar__block">
             <div className="sidebar__list">
-                <SidebarItem img="img/playlist01.png" />
-                <SidebarItem img="img/playlist02.png" />
-                <SidebarItem img="img/playlist03.png" />
+                <SidebarItem
+                    img={showBg ? 'img/bg.png' : 'img/playlist01.png'}
+                />
+                <SidebarItem
+                    img={showBg ? 'img/bg.png' : 'img/playlist02.png'}
+                />
+                <SidebarItem
+                    img={showBg ? 'img/bg.png' : 'img/playlist03.png'}
+                />
             </div>
         </div>
     )
@@ -287,11 +436,19 @@ function SidebarItem(props) {
     return (
         <div className="sidebar__item">
             <a className="sidebar__link" href="#">
-                <img
-                    className="sidebar__img"
-                    src={props.img}
-                    alt="day's playlist"
-                />
+                {props.img.includes('bg.png') ? (
+                    <img
+                        className="sidebar__img"
+                        src={props.img}
+                        alt="sidebar"
+                    />
+                ) : (
+                    <img
+                        className="sidebar__img"
+                        src={props.img}
+                        alt="day's playlist"
+                    />
+                )}
             </a>
         </div>
     )

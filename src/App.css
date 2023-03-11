@@ -39,6 +39,23 @@ body {
   color: #ffffff;
 }
 
+.filter__button {
+  position: relative;
+}
+
+.suggest-container {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 999;
+}
+
+.suggest {
+  background: #313131;
+  border-radius: 12px;
+  padding: 10px;
+}
+
 .wrapper {
   width: 100%;
   min-height: 100%;
@@ -124,6 +141,9 @@ body {
 .nav__menu {
   display: block;
   visibility: visible;
+}
+.nav__menu_closed {
+  display: none;
 }
 
 .logo__image {
@@ -315,6 +335,10 @@ body {
   fill: transparent;
   stroke: #4e4e4e;
 }
+.track__title-text {
+  height: 30px;
+  width: 320px;
+}
 .track__title-link {
   font-style: normal;
   font-weight: 400;
@@ -333,6 +357,7 @@ body {
   width: 321px;
   display: flex;
   justify-content: flex-start;
+  height: 30px;
 }
 .track__author-link {
   font-style: normal;
@@ -344,6 +369,7 @@ body {
 }
 .track__album {
   width: 245px;
+  height: 30px;
 }
 .track__album-link {
   font-style: normal;
@@ -351,6 +377,9 @@ body {
   font-size: 16px;
   line-height: 24px;
   color: #696969;
+}
+.track__time {
+  height: 30px;
 }
 .track__time-svg {
   width: 14px;
@@ -587,7 +616,7 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
 }
 .volume__image {
   width: 13px;
@@ -604,4 +633,14 @@ body {
 }
 .volume__progress-line {
   width: 109px;
+}
+
+.btn__active {
+  border-color: #ad61ff;
+  color: #ad61ff;
+}
+
+.filter .suggest li:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }/*# sourceMappingURL=App.css.map */
