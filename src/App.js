@@ -1,23 +1,22 @@
-import './App.css'
-import PropTypes from 'prop-types'
+import styles from './App.module.css'
 import { useState, useEffect } from 'react'
 
 function App() {
     return (
-        <div className="wrapper">
-            <div className="container">
-                <main className="main">
+        <div className={styles.wrapper}>
+            <div className={styles.container}>
+                <main className={styles.main}>
                     <Navigation />
                     <CenterBlock />
                     <Sidebar />
                 </main>
-                <div className="bar">
-                    <div className="bar__content">
-                        <div className="bar__player-progress"></div>
+                <div className={styles.bar}>
+                    <div className={styles.bar__content}>
+                        <div className={styles.bar__player_progress}></div>
                         <BarPlayerBlock />
                     </div>
                 </div>
-                <footer className="footer"></footer>
+                <footer className={styles.footer}></footer>
             </div>
         </div>
     )
@@ -31,7 +30,7 @@ function Navigation() {
     }
 
     return (
-        <nav className="main__nav nav">
+        <nav className={`${styles.main__nav} ${styles.nav}`}>
             <Logo />
             <Burger onClick={toggleMenu} />
             <Menu isOpen={isOpen} />
@@ -41,18 +40,21 @@ function Navigation() {
 
 function Logo() {
     return (
-        <div className="nav__logo logo">
-            <img className="logo__image" src="img/logo.png" alt="logo" />
+        <div className={`${styles.nav__logo} ${styles.logo}`}>
+            <img className={styles.logo__image} src="img/logo.png" alt="logo" />
         </div>
     )
 }
 
 function Burger({ onClick }) {
     return (
-        <div className="nav__burger burger" onClick={onClick}>
-            <span className="burger__line"></span>
-            <span className="burger__line"></span>
-            <span className="burger__line"></span>
+        <div
+            className={`${styles.nav__burger} ${styles.burger}`}
+            onClick={onClick}
+        >
+            <span className={styles.burger__line}></span>
+            <span className={styles.burger__line}></span>
+            <span className={styles.burger__line}></span>
         </div>
     )
 }
@@ -60,23 +62,23 @@ function Burger({ onClick }) {
 function Menu(props) {
     return (
         <div
-            className={`nav__menu menu ${
-                props.isOpen ? '' : 'nav__menu_closed'
+            className={`${styles.nav__menu} ${styles.menu} ${
+                props.isOpen ? '' : styles.nav__menu_closed
             }`}
         >
-            <ul className="menu__list">
-                <li className="menu__item">
-                    <a href="http://" className="menu__link">
+            <ul className={styles.menu__list}>
+                <li className={styles.menu__item}>
+                    <a href="http://" className={styles.menu__link}>
                         Главное
                     </a>
                 </li>
-                <li className="menu__item">
-                    <a href="http://" className="menu__link">
+                <li className={styles.menu__item}>
+                    <a href="http://" className={styles.menu__link}>
                         Мой плейлист
                     </a>
                 </li>
-                <li className="menu__item">
-                    <a href="http://" className="menu__link">
+                <li className={styles.menu__item}>
+                    <a href="http://" className={styles.menu__link}>
                         Войти
                     </a>
                 </li>
@@ -87,9 +89,9 @@ function Menu(props) {
 
 function CenterBlock() {
     return (
-        <div className="main__centerblock centerblock">
+        <div className={`${styles.main__centerblock} ${styles.centerblock}`}>
             <Search />
-            <h2 className="centerblock__h2">Треки</h2>
+            <h2 className={styles.centerblock__h2}>Треки</h2>
             <Filter />
             <CenterBlockContent />
         </div>
@@ -98,12 +100,12 @@ function CenterBlock() {
 
 function Search() {
     return (
-        <div className="centerblock__search search">
-            <svg className="search__svg">
+        <div className={`${styles.centerblock__search} ${styles.search}`}>
+            <svg className={styles.search__svg}>
                 <use xlinkHref="img/icon/sprite.svg#icon-search"></use>
             </svg>
             <input
-                className="search__text"
+                className={styles.search__text}
                 type="search"
                 placeholder="Поиск"
                 name="search"
@@ -120,30 +122,31 @@ function Filter() {
     }
 
     const getButtonClassName = (suggestType) => {
-        let className = `filter__button button-${suggestType} `
-        if (activeSuggest === suggestType) {
-            className += 'btn__active'
-        } else {
-            className += '_btn-text'
-        }
+        let className = `${styles.filter__button} ${
+            styles[`button_${suggestType}`]
+        } `
+        className +=
+            activeSuggest === suggestType
+                ? styles.btn__active
+                : styles._btn_text
         return className
     }
 
     return (
-        <div className="centerblock__filter filter">
-            <div className="filter__title">Искать по:</div>
+        <div className={`${styles.centerblock__filter} ${styles.filter}`}>
+            <div className={styles.filter__title}>Искать по:</div>
             <div
                 className={getButtonClassName('author')}
                 onClick={() => toggleSuggest('author')}
             >
                 исполнителю
                 <div
-                    className="suggest-container"
+                    className={styles.suggest_container}
                     style={{
                         display: activeSuggest === 'author' ? 'block' : 'none',
                     }}
                 >
-                    <div className="suggest">
+                    <div className={styles.suggest}>
                         <ul>
                             <li>Ali Bakgor</li>
                             <li>AR/CO</li>
@@ -174,12 +177,12 @@ function Filter() {
             >
                 году выпуска
                 <div
-                    className="suggest-container"
+                    className={styles.suggest_container}
                     style={{
                         display: activeSuggest === 'year' ? 'block' : 'none',
                     }}
                 >
-                    <div className="suggest">
+                    <div className={styles.suggest}>
                         <ul>
                             <li>2010</li>
                             <li>2011</li>
@@ -205,12 +208,12 @@ function Filter() {
             >
                 жанру
                 <div
-                    className="suggest-container"
+                    className={styles.suggest_container}
                     style={{
                         display: activeSuggest === 'genre' ? 'block' : 'none',
                     }}
                 >
-                    <div className="suggest">
+                    <div className={styles.suggest}>
                         <ul>
                             <li>Рок</li>
                             <li>Хип-хоп</li>
@@ -227,7 +230,7 @@ function Filter() {
 
 function CenterBlockContent() {
     return (
-        <div className="centerblock__content">
+        <div className={styles.centerblock__content}>
             <ContentTitle />
             <Playlist />
         </div>
@@ -236,12 +239,18 @@ function CenterBlockContent() {
 
 function ContentTitle() {
     return (
-        <div className="content__title playlist-title">
-            <div className="playlist-title__col col01">Трек</div>
-            <div className="playlist-title__col col02">ИСПОЛНИТЕЛЬ</div>
-            <div className="playlist-title__col col03">АЛЬБОМ</div>
-            <div className="playlist-title__col col04">
-                <svg className="playlist-title__svg" alt="time">
+        <div className={`${styles.content__title} ${styles.playlist_title}`}>
+            <div className={`${styles.playlist_title__col} ${styles.col01}`}>
+                Трек
+            </div>
+            <div className={`${styles.playlist_title__col} ${styles.col02}`}>
+                ИСПОЛНИТЕЛЬ
+            </div>
+            <div className={`${styles.playlist_title__col} ${styles.col03}`}>
+                АЛЬБОМ
+            </div>
+            <div className={`${styles.playlist_title__col} ${styles.col04}`}>
+                <svg className={styles['playlist-title__svg']} alt="time">
                     <use xlinkHref="img/icon/sprite.svg#icon-watch"></use>
                 </svg>
             </div>
@@ -261,48 +270,48 @@ function PlaylistItem(props) {
     }, [])
 
     return (
-        <div className="playlist__item">
-            <div className="playlist__track track">
-                <div className="track__title">
-                    <div className="track__title-image">
-                        <svg className="track__title-svg" alt="music">
+        <div className={styles.playlist__item}>
+            <div className={`${styles.playlist__track} ${styles.track}`}>
+                <div className={styles.track__title}>
+                    <div className={styles.track__title_image}>
+                        <svg className={styles.track__title_svg} alt="music">
                             <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
                         </svg>
                     </div>
                     <div
-                        className="track__title-text"
+                        className={styles.track__title_text}
                         style={{ backgroundColor: showText ? '#313131' : '' }}
                     >
-                        <a className="track__title-link " href="http://">
+                        <a className={styles.track__title_link} href="http://">
                             {showText ? '' : props.name}
-                            <span className="track__title-span"></span>
+                            <span className={styles.track__title_span}></span>
                         </a>
                     </div>
                 </div>
                 <div
-                    className="track__author"
+                    className={styles.track__author}
                     style={{ backgroundColor: showText ? '#313131' : '' }}
                 >
-                    <a className="track__author-link" href="http://">
+                    <a className={styles.track__author_link} href="http://">
                         {showText ? '' : props.author}
                     </a>
                 </div>
                 <div
-                    className="track__album"
+                    className={styles.track__album}
                     style={{ backgroundColor: showText ? '#313131' : '' }}
                 >
-                    <a className="track__album-link " href="http://">
+                    <a className={styles.track__album_link} href="http://">
                         {showText ? '' : props.album}
                     </a>
                 </div>
                 <div
-                    className="track__time"
+                    className={styles.track__time}
                     style={{ backgroundColor: showText ? '#313131' : '' }}
                 >
-                    <svg className="track__time-svg" alt="time">
+                    <svg className={styles.track__time_svg} alt="time">
                         <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
                     </svg>
-                    <span className="track__time-text">
+                    <span className={styles.track__time_text}>
                         {showText ? '' : props.time}
                     </span>
                 </div>
@@ -311,16 +320,9 @@ function PlaylistItem(props) {
     )
 }
 
-PlaylistItem.propTypes = {
-    name: PropTypes.text,
-    author: PropTypes.text,
-    album: PropTypes.text,
-    time: PropTypes.text,
-}
-
 function Playlist() {
     return (
-        <div className="content__playlist playlist">
+        <div className={`${styles.content__playlist} ${styles.playlist}`}>
             <PlaylistItem
                 name="Guilt"
                 author="Nero"
@@ -388,7 +390,7 @@ function Playlist() {
 
 function Sidebar() {
     return (
-        <div className="main__sidebar sidebar">
+        <div className={`${styles.main__sidebar} ${styles.sidebar}`}>
             <SidebarName name="Sergey.Ivanov" />
             <SidebarBlock />
         </div>
@@ -397,9 +399,9 @@ function Sidebar() {
 
 function SidebarName(props) {
     return (
-        <div className="sidebar__personal">
-            <p className="sidebar__personal-name">{props.name}</p>
-            <div className="sidebar__avatar"></div>
+        <div className={styles.sidebar__personal}>
+            <p className={styles.sidebar__personal_name}>{props.name}</p>
+            <div className={styles.sidebar__avatar}></div>
         </div>
     )
 }
@@ -416,8 +418,8 @@ function SidebarBlock() {
     }, [])
 
     return (
-        <div className="sidebar__block">
-            <div className="sidebar__list">
+        <div className={styles.sidebar__block}>
+            <div className={styles.sidebar__list}>
                 <SidebarItem
                     img={showBg ? 'img/bg.png' : 'img/playlist01.png'}
                 />
@@ -434,17 +436,17 @@ function SidebarBlock() {
 
 function SidebarItem(props) {
     return (
-        <div className="sidebar__item">
-            <a className="sidebar__link" href="#">
+        <div className={styles.sidebar__item}>
+            <a className={styles.sidebar__link} href="#">
                 {props.img.includes('bg.png') ? (
                     <img
-                        className="sidebar__img"
+                        className={styles.sidebar__img}
                         src={props.img}
                         alt="sidebar"
                     />
                 ) : (
                     <img
-                        className="sidebar__img"
+                        className={styles.sidebar__img}
                         src={props.img}
                         alt="day's playlist"
                     />
@@ -456,7 +458,7 @@ function SidebarItem(props) {
 
 function BarPlayerBlock() {
     return (
-        <div className="bar__player-block">
+        <div className={styles.bar__player_block}>
             <BarPlayer />
             <BarVolume />
         </div>
@@ -465,7 +467,7 @@ function BarPlayerBlock() {
 
 function BarPlayer() {
     return (
-        <div className="bar__player player">
+        <div className={`${styles.bar__player} ${styles.player}`}>
             <BarPlayerControls />
             <PlayerTrack />
         </div>
@@ -474,34 +476,34 @@ function BarPlayer() {
 
 function BarPlayerControls() {
     return (
-        <div className="player__controls">
+        <div className={styles.player__controls}>
             <PlayerBtn
-                type="player__btn-prev"
-                imgType="player__btn-prev-svg"
+                type={`${styles.player__btn_prev}`}
+                imgType={`${styles.player__btn_prev_svg}`}
                 altType="prev"
                 img="img/icon/sprite.svg#icon-prev"
             />
             <PlayerBtn
-                type="player__btn-play _btn"
-                imgType="player__btn-play-svg"
+                type={`${styles.player__btn_play} _btn`}
+                imgType={`${styles.player__btn_play_svg}`}
                 altType="play"
                 img="img/icon/sprite.svg#icon-play"
             />
             <PlayerBtn
-                type="player__btn-next"
-                imgType="player__btn-next-svg"
+                type={`${styles.player__btn_next}`}
+                imgType={`${styles.player__btn_next_svg}`}
                 altType="next"
                 img="img/icon/sprite.svg#icon-next"
             />
             <PlayerBtn
-                type="player__btn-repeat _btn-icon"
-                imgType="player__btn-repeat-svg"
+                type={`${styles.player__btn_repeat} _btn_icon`}
+                imgType={`${styles.player__btn_repeat_svg}`}
                 altType="repeat"
                 img="img/icon/sprite.svg#icon-repeat"
             />
             <PlayerBtn
-                type="player__btn-shuffle _btn-icon"
-                imgType="player__btn-shuffle-svg"
+                type={`${styles.player__btn_shuffle} _btn_icon`}
+                imgType={`${styles.player__btn_shuffle_svg}`}
                 altType="shuffle"
                 img="img/icon/sprite.svg#icon-shuffle"
             />
@@ -521,7 +523,7 @@ function PlayerBtn(props) {
 
 function PlayerTrack() {
     return (
-        <div className="player__track-play track-play">
+        <div className={`${styles.player__track_play} ${styles.track_play}`}>
             <TrackContain />
             <TrackLikeDis />
         </div>
@@ -529,19 +531,19 @@ function PlayerTrack() {
 }
 function TrackContain() {
     return (
-        <div className="track-play__contain">
-            <div className="track-play__image">
-                <svg className="track-play__svg" alt="music">
+        <div className={styles.track_play__contain}>
+            <div className={styles.track_play__image}>
+                <svg className={styles.track_play__svg} alt="music">
                     <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
                 </svg>
             </div>
-            <div className="track-play__author">
-                <a className="track-play__author-link" href="http://">
+            <div className={styles.track_play__author}>
+                <a className={styles.track_play__author_link} href="http://">
                     Ты та...
                 </a>
             </div>
-            <div className="track-play__album">
-                <a className="track-play__album-link" href="http://">
+            <div className={styles.track_play__album}>
+                <a className={styles.track_play__album_link} href="http://">
                     Баста
                 </a>
             </div>
@@ -551,14 +553,16 @@ function TrackContain() {
 
 function TrackLikeDis() {
     return (
-        <div className="track-play__like-dis">
-            <div className="track-play__like _btn-icon">
-                <svg className="track-play__like-svg" alt="like">
+        <div className={styles.track_play__like_dis}>
+            <div className={`${styles.track_play__like} ${styles._btn_icon}`}>
+                <svg className={styles.track_play__like_svg} alt="like">
                     <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
                 </svg>
             </div>
-            <div className="track-play__dislike _btn-icon">
-                <svg className="track-play__dislike-svg" alt="dislike">
+            <div
+                className={`${styles.track_play__dislike} ${styles._btn_icon}`}
+            >
+                <svg className={styles.track_play__dislike_svg} alt="dislike">
                     <use xlinkHref="img/icon/sprite.svg#icon-dislike"></use>
                 </svg>
             </div>
@@ -568,16 +572,16 @@ function TrackLikeDis() {
 
 function BarVolume() {
     return (
-        <div className="bar__volume-block volume">
-            <div className="volume__content">
-                <div className="volume__image">
-                    <svg className="volume__svg" alt="volume">
+        <div className={`${styles.bar__volume_block} ${styles.volume}`}>
+            <div className={styles.volume__content}>
+                <div className={styles.volume__image}>
+                    <svg className={styles.volume__svg} alt="volume">
                         <use xlinkHref="img/icon/sprite.svg#icon-volume"></use>
                     </svg>
                 </div>
-                <div className="volume__progress _btn">
+                <div className={`${styles.volume__progress} ${styles._btn}`}>
                     <input
-                        className="volume__progress-line _btn"
+                        className={`${styles.volume__progress_line} ${styles._btn}`}
                         type="range"
                         name="range"
                     />
